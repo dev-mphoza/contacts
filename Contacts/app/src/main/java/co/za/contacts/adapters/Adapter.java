@@ -72,6 +72,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             btnMessage = itemView.findViewById(R.id.btnMessage);
             btnEdit = itemView.findViewById(R.id.btnEdit);
 
+
+            setItemViewListener();
+
+            setDialClickListener();
+
+            setMessageClickListener();
+
+            setEditClickListener();
+
+        }
+
+        private void setItemViewListener(){
             itemView.setOnClickListener(v -> {
                 if(tapLayout.getVisibility() == View.GONE){
                     tapLayout.setVisibility(View.VISIBLE);
@@ -79,21 +91,28 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     tapLayout.setVisibility(View.GONE);
                 }
             });
+        }
 
+
+        private void setDialClickListener(){
             btnDial.setOnClickListener(v -> {
                 String phoneNumber = "tel: " + phoneNo.getText().toString();
                 Intent dialIntent = new Intent(Intent.ACTION_DIAL);
                 dialIntent.setData(Uri.parse(phoneNumber));
                 itemView.getContext().startActivity(dialIntent);
             });
+        }
 
+        private void setMessageClickListener(){
             btnMessage.setOnClickListener(v -> {
                 String phoneNumber = phoneNo.getText().toString();
                 Intent smsIntent = new Intent(Intent.ACTION_VIEW);
                 smsIntent.setData(Uri.parse("sms:" + phoneNumber));
                 itemView.getContext().startActivity(smsIntent);
             });
+        }
 
+        private void setEditClickListener(){
             btnEdit.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), ContactCardActivity.class);
                 intent.putExtra("sender", Sender.EDIT.getDescription());
@@ -114,13 +133,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 if(bitmap != null){
-                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                 byte[] byteArray = byteArrayOutputStream.toByteArray();
-                 intent.putExtra("imageData",byteArray);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                    byte[] byteArray = byteArrayOutputStream.toByteArray();
+                    intent.putExtra("imageData",byteArray);
                 }
                 itemView.getContext().startActivity(intent);
             });
-
         }
     }
 }
