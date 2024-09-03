@@ -118,18 +118,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 intent.putExtra("sender", Sender.EDIT.getDescription());
                 intent.putExtra("contactDetails", new String[]{name.getText().toString(), phoneNo.getText().toString()});
 
-                Bitmap bitmap = null;
-                Drawable drawable = imageView.getDrawable();
-                if(drawable != null){
-                    if(drawable instanceof BitmapDrawable){
-                        bitmap = ((BitmapDrawable) drawable).getBitmap();
-                    }else{
-                        bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-                        Canvas canvas = new Canvas(bitmap);
-                        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-                        drawable.draw(canvas);
-                    }
-                }
+
+                Bitmap bitmap = getContactImageBitmap();
 
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 if(bitmap != null){
@@ -139,6 +129,22 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 }
                 itemView.getContext().startActivity(intent);
             });
+        }
+
+        private Bitmap getContactImageBitmap(){
+            Bitmap bitmap = null;
+            Drawable drawable = imageView.getDrawable();
+            if(drawable != null){
+                if(drawable instanceof BitmapDrawable){
+                    bitmap = ((BitmapDrawable) drawable).getBitmap();
+                }else{
+                    bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                    Canvas canvas = new Canvas(bitmap);
+                    drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                    drawable.draw(canvas);
+                }
+            }
+            return bitmap;
         }
     }
 }
