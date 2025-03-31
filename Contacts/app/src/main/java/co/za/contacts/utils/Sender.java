@@ -1,4 +1,4 @@
-package co.za.contacts.model;
+package co.za.contacts.utils;
 
 public enum Sender {
     ADD("Add"), EDIT("Edit");

@@ -23,7 +23,7 @@ import java.util.List;
 import co.za.contacts.model.Contact;
 import co.za.contacts.ContactCardActivity;
 import co.za.contacts.R;
-import co.za.contacts.model.Sender;
+import co.za.contacts.utils.Sender;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 

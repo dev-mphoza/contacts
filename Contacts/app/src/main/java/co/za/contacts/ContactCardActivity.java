@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import co.za.contacts.data.Data;
 import co.za.contacts.model.Contact;
-import co.za.contacts.model.Sender;
+import co.za.contacts.utils.Sender;
 
 public class ContactCardActivity extends AppCompatActivity {
     private EditText etContactName;

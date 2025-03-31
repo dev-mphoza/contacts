@@ -6,12 +6,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import java.util.List;
 
 import co.za.contacts.adapters.Adapter;
 import co.za.contacts.data.Data;
-import co.za.contacts.model.Contact;
-import co.za.contacts.model.Sender;
+import co.za.contacts.utils.Sender;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
