@@ -140,7 +140,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 }else{
                     bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
                     Canvas canvas = new Canvas(bitmap);
-                    drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                    drawable.setBounds(1, 1, canvas.getWidth(), canvas.getHeight());
                     drawable.draw(canvas);
                 }
             }
